@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TurnitoArg</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input {
+      display: block;
+      margin: 5px 0;
+      padding: 8px;
+      width: 100%;
+    }
+    button {
+      padding: 10px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>⚽ TurnitoArg</h1>
+  <p>Encontrá gente para jugar o sumate a un partido.</p>
+
+  <div class="card">
+    <h2>Publicar partido</h2>
+    <input type="text" id="zona" placeholder="Zona">
+    <input type="text" id="horario" placeholder="Día y horario">
+    <button onclick="publicar()">Publicar</button>
+  </div>
+
+  <div class="card">
+    <h2>Partidos disponibles</h2>
+    <div id="lista"></div>
+  </div>
+
+  <script>
+    function publicar() {
+      const zona = document.getElementById('zona').value;
+      const horario = document.getElementById('horario').value;
+
+      if (!zona || !horario) {
+        alert("Completá todos los campos");
+        return;
+      }
+
+      const lista = document.getElementById('lista');
+      const nuevo = document.createElement('p');
+      nuevo.textContent = `📍 ${zona} - 🕒 ${horario}`;
+      lista.appendChild(nuevo);
+
+      document.getElementById('zona').value = '';
+      document.getElementById('horario').value = '';
+    }
+  </script>
+
+</body>
+</html>
